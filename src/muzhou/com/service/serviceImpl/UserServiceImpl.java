@@ -1,8 +1,6 @@
 package muzhou.com.service.serviceImpl;
 
 import muzhou.com.bean.UserBean;
-import muzhou.com.dao.UserDao;
-import muzhou.com.dao.daoImpl.UserDaoImpl;
 import muzhou.com.service.UserService;
 
 public class UserServiceImpl extends BaseService implements UserService {

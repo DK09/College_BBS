@@ -75,4 +75,18 @@ public class AnswerBean {
     public void setVisible(String visible) {
         this.visible = visible;
     }
+
+    @Override
+    public String toString() {
+        return "AnswerBean{" +
+                "aid=" + aid +
+                ", userId=" + userId +
+                ", qid=" + qid +
+                ", content='" + content + '\'' +
+                ", time=" + time +
+                ", likeCount=" + likeCount +
+                ", unlikeCount=" + unlikeCount +
+                ", visible='" + visible + '\'' +
+                '}';
+    }
 }

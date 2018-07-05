@@ -76,4 +76,18 @@ public class CommentBean {
     public int getUnlikeCount() {
         return unlikeCount;
     }
+
+    @Override
+    public String toString() {
+        return "CommentBean{" +
+                "cid=" + cid +
+                ", userId=" + userId +
+                ", aid=" + aid +
+                ", recId=" + recId +
+                ", content='" + content + '\'' +
+                ", time=" + time +
+                ", likeCount=" + likeCount +
+                ", unlikeCount=" + unlikeCount +
+                '}';
+    }
 }

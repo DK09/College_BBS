@@ -4,11 +4,10 @@
 <head>
 <title>Orders</title>
 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/buttons.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/mystyle.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="JQuery.js">
+<link href="/css/bootstrap.css" rel="stylesheet">
+<link href="/css/buttons.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/mystyle.css" rel="stylesheet" type="text/css" media="all" />
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,14 +17,14 @@
 <!-- //for-mobile-apps -->
 <!-- js -->
 <!--animate-->
-<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
-<script src="js/wow.min.js"></script>
+<link href="/css/animate.css" rel="stylesheet" type="text/css" media="all">
+<script src="/js/wow.min.js"></script>
 	<script>
 		 new WOW().init();
 	</script>
 <!--//end-animate-->
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
 <!-- js -->
 								<script>
 									$(document).ready(function () {
@@ -91,13 +90,13 @@
 <div class="banner page-head">
 		<div class="header">	
 			<div class="logo">
-			   <h1><a href="index.html"><i><img src="images/cell.png" alt=" " /></i>我们的网页</a></h1>
+			   <h1><a href="index.html"><i><img src="/images/cell.png" alt=" " /></i>我们的网页</a></h1>
 			</div>
 			<div class="top-nav">
-				<span class="menu"><img src="images/menu.png" alt=" " /></span>
+				<span class="menu"><img src="/images/menu.png" alt=" " /></span>
 				<ul class="nav1">
-					<li><a href="index.html">主页</a></li>
-					<li><a href="#orders.html">问答社区</a></li>
+					<li><a href="#">主页</a></li>
+					<li><a href="#">问答社区</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#myModal1">登录</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#myModal2">注册</a></li>
 				</ul>
@@ -122,8 +121,8 @@
 				</div>
 			</div>
 					<!-- search-scripts -->
-					<script src="js/classie.js"></script>
-					<script src="js/uisearch.js"></script>
+					<script src="/js/classie.js"></script>
+					<script src="/js/uisearch.js"></script>
 						<script>
 							new UISearch( document.getElementById( 'sb-search' ) );
 						</script>
@@ -527,39 +526,9 @@
 										</div>
 								  </div>
 								  <div role="tabpanel" class="tabs-para tab-pane fade" id="create-question" aria-labelledby="shop-tab">
-										 <div id="make-question">
-											<form id="test" action="#" method="get">
-											<fieldset>
-												<legend>问题描述</legend>
-												<div class="form-row">
-													<div class="question-label"><label for="field1" style="color: black;font-weight:normal">问题名称</label>:</div>
-													<div class="field-widget"><input name="field1" id="field1" class="required" title="Enter your question" /></div>
-												</div>
-													
-												
-												<div class="form-row">
-													<div class="requirement-field-label"><label for="field3" style="color: black;font-weight:normal">问题内容</label>:</div>
-													<div class="field-widget"><textarea class="question-details"></textarea></div>
-												</div>
-        										<div class="form-row">
-													<div class="question-label"><label for="field6" style="color: black;font-weight:normal;margin-top: 5px;">专业</label>:</div>
-													<div class="field-widget">
-														<select id="field2" name="field2" class="validate-selection" title="选择问题所属的专业">
-															<option>其他</option>
-															<option>文</option>
-															<option>法</option>
-															<option>理</option>
-															<option>工</option>
-															<option>医</option>
-															<option>农</option>
-														</select>
-													</div>
-												</div>
-        
-											</fieldset>
-											<input type="submit" class="submit" value="提交" /> 
-											<input class="reset" type="button" value="清空" onclick="reset(); return false" />
-											</form>
+										<div class="profile-gd grid_two">
+											<h5>NO ORDERS FOUND</h5>
+											<a href="single.html">SHOP NOW</a>
 										</div>
 								  </div>
 								</div>
@@ -577,29 +546,14 @@
 						</div>
 						<div class="modal-body modal-spa">
 							<div class="login-grids">
-								<div class="login" id="log-in">
+								<div class="login">
 									<div class="login-right">
 										<form>
 											<h3 style="text-align:center;">登录</h3>
-											<div class="pom-agile" style="width: 100%;display: inline-flex;">
-												<span class="fa fa-user-o" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
-												<div style="float:right;width: 82%">
-													<input type="text" class="phone" placeholder="请输入用户名或邮箱" onfocus="this.placeholder = '' " onblur="this.placeholder = '请输入用户名或邮箱' " required>
-												</div>
-												<span id="user-valid" aria-hidden="true" class="fa fa-check"
-															  style="display:none;font-size:25px;width:10%;color:#00be00;float: right;margin-top: 27px;padding-left:5px;">
-												</span>
-												<span title="用户不存在" id="user-not-exist" aria-hidden="true" class="fa fa-exclamation-triangle"
-														  style="display:none;font-size:25px;width:10%;color:red;float: right;margin-top: 27px;padding-left:5px;">
-												</span>
-											</div>
-											<div class="pom-agile" style="width: 100%;display: inline-flex;">
-												<span class="fa fa-key" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
-												<div style="float:right;width: 82%">
-													<input type="password" class="password" placeholder="密码" onfocus="this.placeholder = '' " onblur="this.placeholder = '密码' " required>
-												</div>
-											</div>
-											<div class="single-bottom" style="margin-left:8%;margin-top:1px">
+											<input type="text" value="请输入用户名或邮箱" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your mobile number or Email';}" required>	
+											<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required>	
+											
+											<div class="single-bottom">
 												<input type="checkbox"  id="brand" value="">
 												<label for="brand"><span></span>记住我.</label>
 											</div>
@@ -610,7 +564,6 @@
 								</div>
 								<p>登录即代表你同意此网站的 <span>相关政策</span> and <span>隐私协议</span></p>
 							</div>
-							
 						</div>
 					</div>
 				</div>
@@ -625,73 +578,15 @@
 						</div>
 						<div class="modal-body modal-spa">
 							<div class="login-grids">
-								<div class="login" id="sign-up">
+								<div class="login">
 									<div class="login-right">
 										<form>
 											<h3 style="text-align:center;">注册</h3>
-											<div class="pom-agile" style="width: 100%; display: inline-flex;">
-												<span class="fa fa-user-o" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
-												<div style="float:left;width: 82%">
-														<input type="text" class="userName" placeholder="用户名" onfocus="this.placeholder = '' " onblur="this.placeholder = '用户名' " required>
-												</div>	
-												<span id="name-Correct" aria-hidden="true" class="fa fa-check"
-														  style="display:none;font-size:25px;width:10%;color:#00be00;float: right;margin-top: 27px;padding-left:5px;">
-												</span>
-												<span title="用户名已存在" id="name-duplicate" aria-hidden="true" class="fa fa-exclamation-triangle"
-														  style="display:none;font-size:25px;width:10%;color:red;float: right;margin-top: 27px;padding-left:5px;">
-												</span>
-				<!--                                <span id="nameWrong" class="fa fa-close"
-													  style="font-size:25px;margin-left: 5px; color:red;float: right;display: none;"></span>-->
-											</div>
+											<input type="text" value="用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required>
+											<input type="text" value="手机" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mobile number';}" required>
+											<input type="text" value="邮箱" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email id';}" required>	
+											<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required>	
 											
-											<div class="pom-agile" style="width: 100%;display: inline-flex;">
-												<span class="fa fa-phone" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
-												<div style="float:right;width: 82%">
-													<input type="text" class="phone" placeholder="手机号码" onfocus="this.placeholder = '' " onblur="this.placeholder = '手机号码' " required>
-												</div>
-												<span id="phone-valid" aria-hidden="true" class="fa fa-check"
-															  style="display:none;font-size:25px;width:10%;color:#00be00;float: right;margin-top: 27px;padding-left:5px;">
-												</span>
-												<span title="该号码已存在" id="phone-duplicate" aria-hidden="true" class="fa fa-exclamation-triangle"
-														  style="display:none;font-size:25px;width:10%;color:red;float: right;margin-top: 27px;padding-left:5px;">
-												</span>
-											</div>
-											<div class="pom-agile" style="width: 100%;display: inline-flex;">
-												<span class="fa fa-envelope-o" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
-												<div style="float:right;width: 82%">
-													<input type="text" class="phone" placeholder="邮箱" onfocus="this.placeholder = '' " onblur="this.placeholder = '邮箱' " required>
-												</div>
-												<span id="email-valid" aria-hidden="true" class="fa fa-check"
-															  style="display:none;font-size:25px;width:10%;color:#00be00;float: right;margin-top: 27px;padding-left:5px;">
-												</span>
-												<span title="该邮箱已存在" id="email-duplicate" aria-hidden="true" class="fa fa-exclamation-triangle"
-														  style="display:none;font-size:25px;width:10%;color:red;float: right;margin-top: 27px;padding-left:5px;">
-												</span>
-											</div>
-											<div class="pom-agile" style="width: 100%;display: inline-flex;">
-												<span class="fa fa-key" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
-												<div style="float:right;width: 82%">
-													<input type="password" class="password" placeholder="密码" onfocus="this.placeholder = '' " onblur="this.placeholder = '密码' " required>
-												</div>
-												<span id="password" aria-hidden="true" class="fa fa-check"
-															  style="display:none;font-size:25px;width:10%;color:#00be00;float: right;margin-top: 27px;padding-left:5px;">
-												</span>
-												<span title="密码格式不正确" id="password-invalid" aria-hidden="true" class="fa fa-exclamation-triangle"
-														  style="display:none;font-size:25px;width:10%;color:red;float: right;margin-top: 27px;padding-left:5px;">
-												</span>
-											</div>
-											<div class="pom-agile" style="width: 100%;display: inline-flex;">
-												<span class="fa fa-key" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
-												<div style="float:right;width: 82%">
-													<input type="password" class="password-ok" placeholder="确认密码" onfocus="this.placeholder = '' " onblur="this.placeholder = '确认密码' " required>
-												</div>
-												<span id="password-same" aria-hidden="true" class="fa fa-check"
-															  style="display:none;font-size:25px;width:10%;color:#00be00;float: right;margin-top: 27px;padding-left:5px;">
-												</span>
-												<span title="两次输入的密码不同" id="password-different" aria-hidden="true" class="fa fa-exclamation-triangle"
-														  style="display:none;font-size:25px;width:10%;color:red;float: right;margin-top: 27px;padding-left:5px;">
-												</span>
-											</div>		
 											<input type="submit" value="注册" >
 										</form>
 									</div>
@@ -707,7 +602,7 @@
 
 
 <!-- for bootstrap working -->
-		<script src="js/bootstrap.js"></script>
+		<script src="/js/bootstrap.js"></script>
 <!-- //for bootstrap working -->
 </body>
 </html>

@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Payment</title>
+<title>Settings</title>
 
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -17,17 +18,16 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <!--//fonts-->	
 <!-- js -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
-
-<!-- js -->
 <!--animate-->
-<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
-<script src="js/wow.min.js"></script>
+<link href="/css/animate.css" rel="stylesheet" type="text/css" media="all">
+<script src="/js/wow.min.js"></script>
 	<script>
 		 new WOW().init();
 	</script>
 <!--//end-animate-->
-<script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<!-- js -->
+								<script>
 									$(document).ready(function () {
 										//Initialize tooltips
 										$('.nav-tabs > li a[title]').tooltip();
@@ -70,10 +70,10 @@
 <div class="banner page-head">
 	<div class="header">	
 			<div class="logo">
-			   <h1><a href="index.html"><i><img src="images/cell.png" alt=" " /></i>Easy Recharge</a></h1>
+			   <h1><a href="index.html"><i><img src="/images/cell.png" alt=" " /></i>Easy Recharge</a></h1>
 			</div>
 			<div class="top-nav">
-				<span class="menu"><img src="images/menu.png" alt=" " /></span>
+				<span class="menu"><img src="/images/menu.png" alt=" " /></span>
 				<ul class="nav1">
 					<li><a href="#" data-toggle="modal" data-target="#myModal">Mobile</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#myModal2">datacard</a></li>
@@ -103,12 +103,14 @@
 						</div>
 				    </div>
 					<!-- search-scripts -->
-					<script src="js/classie.js"></script>
-					<script src="js/uisearch.js"></script>
+					<script src="/js/classie.js"></script>
+					<script src="/js/uisearch.js"></script>
 						<script>
 							new UISearch( document.getElementById( 'sb-search' ) );
 						</script>
 				<!-- //search-scripts -->
+				
+			
 			<div class="clearfix"> </div>
 	</div>
 	<div class="container">
@@ -128,9 +130,8 @@
 								</a>
 								<ul class="dropdown-menu drp-mnu">
 									<li> <a href="#" data-toggle="modal" data-target="#myModal6"> Edit</a> </li> 
-									<li> <a href="settings.html"> View Profile</a> </li>
 									<li> <a href="orders.html">Your orders</a> </li>
-																		
+									<li> <a href="#"> Help Center</a> </li> 									
 									<li> <a href="#" data-toggle="modal" data-target="#myModal4"> Logout</a> </li>
 								</ul>
 							</li>
@@ -139,6 +140,83 @@
 		</div>
 			<div class="clearfix"> </div>
 	</div>
+</div>
+<div class="set-content">
+	<div class="container">
+		<h4 class="view_title">SETTINGS</h4>
+							<div class="bs-example bs-example-tabs orders-tab" role="tabpanel" data-example-id="togglable-tabs">
+								<ul id="myTab" class="nav nav-tabs" role="tablist">
+								  <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Personal info</a></li>
+								  <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Address</a></li>
+								  <li role="presentation"><a href="#return" role="tab" id="return-tab" data-toggle="tab" aria-controls="return">Change Password</a></li>
+								</ul>
+								<div id="myTabContent" class="tab-content">
+									<div role="tabpanel" class="tabs-para tab-pane fade in active" id="home" aria-labelledby="home-tab">
+										<div class="profile-gd">
+											<ul class="pro-left">
+												<li>Name</li>
+												<li>Email</li>
+												<li>Mobile number</li>
+												<li>Date Of Birth</li>
+												<li>Gender</li>
+											</ul>
+											<ul class="pro-right">
+												<li>: Kimberly Thompson <a href="#" data-toggle="modal" data-target="#myModal6"> Edit</a></li> 
+												<li>: thompson@gmail.com</li>
+												<li>: 1234567899</li>
+												<li>: 04/10/79</li>
+												<li>: Male</li>
+											</ul>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								  <div role="tabpanel" class="tabs-para tab-pane fade" id="profile" aria-labelledby="profile-tab">
+										<div class="profile-gd">
+											<form>
+												<div class="tab-for-sett">				
+													<h5>Full name</h5>													
+														<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+													<h5>Address line1</h5>													
+														<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+													<h5>Address line2</h5>													
+														<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+												</div>
+												<div class="tab-for-sett">				
+													<h5>City</h5>													
+														<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+													<h5>State</h5>													
+														<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+													<h5>Mobile number</h5>													
+														<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+													
+												</div>
+												<div class="clearfix"></div>
+												<input type="submit" value="SAVE">
+											</form>
+										</div>
+								  </div>
+								  <div role="tabpanel" class="tabs-para tab-pane fade" id="return" aria-labelledby="return-tab">
+									<div class="profile-gd">
+											<form>
+												<div class="tab-for-sett">				
+													<h5>old password</h5>													
+														<input type="password" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+													<h5>new password</h5>													
+														<input type="password" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+													<h5>confirm password</h5>													
+														<input type="password" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+												</div>
+												
+												<div class="clearfix"></div>
+												<input type="submit" value="SAVE">
+											</form>
+										</div>
+								  </div>
+								 
+								</div>
+							</div>
+	</div>
+</div>
 	<!-- edit -->
 			<div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" role="document">
@@ -148,7 +226,6 @@
 						</div>
 						<div class="modal-body">
 							<div class="edit-pro">
-							
 								<form>
 									<div class="edit-for-sett">				
 										<h5>name</h5>													
@@ -159,7 +236,7 @@
 											<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
 										<h5>date of birth</h5>	
 											<input type="date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Select date';}">
-										<h5>Gender</h5>	
+										<h5>Gender</h5>
 										<div class="swit-radio-thre">								
 											<div class="check_box_thre"> <div class="radio_thre"> <label><input type="radio" name="radio" checked=""><i></i>MALE</label> </div></div>
 											<div class="check_box_thre"> <div class="radio_thre"> <label><input type="radio" name="radio"><i></i>FEMALE</label> </div></div>	
@@ -174,212 +251,6 @@
 				</div>
 			</div>
 		<!-- edit -->
-</div>
-
-<div class="banner-bottom">
-	<div class="container">
-		<div class="view_plans">
-			<h4 class="view_title">Select Payment Method</h4>
-			<div class="section_room_single">
-				<h3>Transaction ID : 1405980917</h3>
-			</div>
-			<div class="clearfix"> </div>
-			<div id="verticalTab" class="resp-vtabs" style="display: block; width: 100%; margin: 0px;">
-					<div class="col-md-3 pay-left">
-						<ul class="resp-tabs-list">
-							<li class="resp-tab-item" aria-controls="tab_item-0" role="tab">Debit Card</li>
-							<li class="resp-tab-item" aria-controls="tab_item-1" role="tab">Credit Card</li>
-							<li class="resp-tab-item" aria-controls="tab_item-2" role="tab">Net Banking</li>
-							<li class="resp-tab-item" aria-controls="tab_item-3" role="tab">ATM</li>
-							<li class="resp-tab-item" aria-controls="tab_item-4" role="tab">IMPS</li>
-						</ul>
-					</div>
-					<div class="col-md-9 pay-right">
-						<div class="resp-tabs-container">
-							<h2 class="resp-accordion" role="tab" aria-controls="tab_item-0"></h2>
-								<div class="resp-tab-content" aria-labelledby="tab_item-0">
-									<div class="vertical_post">
-										<form>
-											<h5>Enter Debit Card Number</h5>
-											<input type="text" value=" " class="card_logo" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
-											<div class="transaction">
-												<div class="tab-form-left user-form">
-													<h5>EXPIRATION</h5>
-														<ul>
-															<li>
-																<input type="number" class="text_box" value="6" min="1">	
-															</li>
-															<li>
-																<input type="number" class="text_box" value="1988" min="1">	
-															</li>	
-														</ul>
-												</div>
-												<div class="tab-form-right user-form-rt">
-													<h5>CVV NUMBER</h5>													
-													<input type="text" value="xxxx" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'xxxx';}" required="">
-												</div>
-												<div class="clearfix"></div>
-											</div>
-											<div class="single-check">
-												<input type="checkbox"  id="brand" value="">
-												<label for="brand"><span></span>Save this card for faster checkout.</label>
-												
-											</div>
-											<input type="submit" value="PAY NOW">
-										</form>
-									</div>
-								</div>
-							<h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"></h2>
-								<div class="resp-tab-content" aria-labelledby="tab_item-1">
-									<div class="vertical_post">
-										<form>
-											<h5>Enter Credit Card Number</h5>
-											<input type="text" value=" " class="card_logo" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
-											<div class="transaction">
-												<div class="tab-form-left user-form">
-													<h5>EXPIRATION</h5>
-														<ul>
-															<li>
-																<input type="number" class="text_box" value="6" min="1">	
-															</li>
-															<li>
-																<input type="number" class="text_box" value="1988" min="1">	
-															</li>	
-														</ul>
-												</div>
-												<div class="tab-form-right user-form-rt">
-													<h5>CVV NUMBER</h5>													
-													<input type="text" value="xxxx" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'xxxx';}" required="">
-												</div>
-												<div class="clearfix"></div>
-											</div>
-											<div class="single-check">
-												<input type="checkbox"  id="brand4" value="">
-												<label for="brand4"><span></span>Save this card for faster checkout.</label>
-												
-											</div>
-											<input type="submit" value="PAY NOW">
-										</form>
-									</div>
-								</div>
-							<h2 class="resp-accordion" role="tab" aria-controls="tab_item-2"></h2>
-							<div class="new_posts resp-tab-content" aria-labelledby="tab_item-2">
-								<div class="vertical_post">
-									<form>
-										<h5>Select From Popular Banks</h5>
-										<div class="swit-radio">								
-											<div class="check_box_one"> <div class="radio_one"> <label><input type="radio" name="radio" checked=""><i></i>Syndicate Bank</label> </div></div>
-											<div class="check_box_one"> <div class="radio_one"> <label><input type="radio" name="radio"><i></i>Bank of Baroda</label> </div></div>
-											<div class="check_box_one"> <div class="radio_one"> <label><input type="radio" name="radio"><i></i>Canara Bank</label> </div></div>	
-											<div class="check_box_one"> <div class="radio_one"> <label><input type="radio" name="radio"><i></i>ICICI Bank</label> </div></div>	
-											<div class="check_box_one"> <div class="radio_one"> <label><input type="radio" name="radio"><i></i>State Bank Of India</label> </div></div>		
-											<div class="clearfix"></div>
-										</div>
-										<h5>Or SELECT OTHER BANK</h5>
-										<div class="section_room_pay">
-											<select id="country" onchange="change_country(this.value)" class="frm-field required">
-												<option value="null">Indian Overseas Bank</option>
-												<option value="null">HDFC Bank</option>         
-												<option value="AX">Syndicate Bank</option>
-												<option value="AX">Deutsche Bank</option>
-												<option value="AX">Indian Bank</option>
-												<option value="AX">ING Vysya Bank</option>
-											</select>
-										</div>
-										<input type="submit" value="PAY NOW">
-									</form>
-								</div>
-							</div>
-							<h2 class="resp-accordion" role="tab" aria-controls="tab_item-3"></h2>
-							<div class="new_posts resp-tab-content" aria-labelledby="tab_item-3">
-								<div class="vertical_post">
-									<form>
-										<h5>Select From Popular Banks</h5>
-										<div class="swit-radio">								
-											<div class="check_box_one"> <div class="radio_one"> <label><input type="radio" name="radio" checked=""><i></i>Syndicate Bank</label> </div></div>
-											<div class="check_box_one"> <div class="radio_one"> <label><input type="radio" name="radio"><i></i>Bank of Baroda</label> </div></div>
-											<div class="check_box_one"> <div class="radio_one"> <label><input type="radio" name="radio"><i></i>Canara Bank</label> </div></div>	
-											<div class="check_box_one"> <div class="radio_one"> <label><input type="radio" name="radio"><i></i>ICICI Bank</label> </div></div>	
-											<div class="check_box_one"> <div class="radio_one"> <label><input type="radio" name="radio"><i></i>State Bank Of India</label> </div></div>		
-											<div class="clearfix"></div>
-										</div>
-										<h5>Or SELECT OTHER BANk</h5>
-										<div class="section_room_pay">
-											<select id="country" onchange="change_country(this.value)" class="frm-field required">
-												<option value="null">Indian Overseas Bank</option>
-												<option value="null">HDFC Bank</option>         
-												<option value="AX">Syndicate Bank</option>
-												<option value="AX">Deutsche Bank</option>
-												<option value="AX">Indian Bank</option>
-												<option value="AX">ING Vysya Bank</option>
-											</select>
-										</div>
-										<input type="submit" value="PAY NOW">
-									</form>
-								</div>
-							</div>	  
-							  <h2 class="resp-accordion" role="tab" aria-controls="tab_item-4"></h2><div class="new_posts resp-tab-content" aria-labelledby="tab_item-3">
-								<div class="vertical_post">
-										<form>
-											<h5>Mobile Number</h5>
-											<input type="text" value=" " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
-											<div class="transaction">
-												<div class="tab-form-left user-form">
-													<h5>MMID</h5>
-														<ul>
-															<li class="mmid-grid">
-																<input type="text" value=" " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
-															</li>
-														</ul>
-												</div>
-												<div class="tab-form-right user-form-rt">
-													<h5>OTP</h5>													
-													<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'xxxx';}" required="">
-												</div>
-												<div class="clearfix"></div>
-											</div>
-											<div class="single-check">
-												<input type="checkbox"  id="brand1" value="">
-												<label for="brand1"><span></span>Save this card for faster checkout.</label>
-												
-											</div>
-											<input type="submit" value="PAY NOW">
-										</form>
-									</div>
-							</div>	           
-						</div>
-					</div>
-					<div class="clearfix"></div>
-					<script src="js/easyResponsiveTabs.js"></script>
-						<script type="text/javascript">
-							$(document).ready(function () {
-								$('#horizontalTab').easyResponsiveTabs({
-									type: 'default', //Types: default, vertical, accordion           
-									width: 'auto', //auto or any width like 600px
-									fit: true,   // 100% fit in a container
-									closed: 'accordion', // Start closed if in accordion view
-									activate: function(event) { // Callback function if tab is switched
-										var $tab = $(this);
-										var $info = $('#tabInfo');
-										var $name = $('span', $info);
-
-										$name.text($tab.text());
-
-										$info.show();
-									}
-								});
-
-								$('#verticalTab').easyResponsiveTabs({
-									type: 'vertical',
-									width: 'auto',
-									fit: true
-								});
-							});
-						</script>
-			</div>
-		</div>
-	</div>
-</div>
 <!-- mobile -->
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" role="document">
@@ -443,7 +314,7 @@
 												<div class="tab-pane active" role="tabpanel" id="step1">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/mobile.png" alt="" />
+															<img src="/images/mobile.png" alt="" />
 														</div>
 														<div class="mobile-right">
 															<h4>Enter your mobile number</h4>
@@ -458,14 +329,14 @@
 												<div class="tab-pane" role="tabpanel" id="step2">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/mobile.png" alt="" />
+															<img src="/images/mobile.png" alt="" />
 														</div>
 														<div class="mobile-right ">
 															<h4>Prepaid or Postpaid?</h4>
 															<div class="radio-btns">
 																<div class="swit">								
 																	<div class="check_box"> 
-																		<img src="images/card.png" alt="" />
+																		<img src="/images/card.png" alt="" />
 																		<div class="clearfix"></div>
 																		<div class="radio"> 
 																			<label>
@@ -474,7 +345,7 @@
 																		</div>
 																	</div>
 																	<div class="check_box"> 
-																		<img src="images/card.png" alt="" />
+																		<img src="/images/card.png" alt="" />
 																		<div class="clearfix"></div>
 																		<div class="radio"> 
 																			<label>
@@ -495,7 +366,7 @@
 												<div class="tab-pane" role="tabpanel" id="step3">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/mobile.png" alt="" />
+															<img src="/images/mobile.png" alt="" />
 														</div>
 														<div class="mobile-right ">
 															<h4>Which operator?</h4>
@@ -533,12 +404,12 @@
 												<div class="tab-pane" role="tabpanel" id="step4">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/mobile.png" alt="" />
+															<img src="/images/mobile.png" alt="" />
 														</div>
 														<div class="mobile-right ">
 															<h4>Which Circle?</h4>
 															<div class="map-image">
-																<img src="images/map.png" alt="" />
+																<img src="/images/map.png" alt="" />
 															</div>
 															<div class="section_room">
 																<select id="country" onchange="change_country(this.value)" class="frm-field required">
@@ -568,7 +439,7 @@
 												<div class="tab-pane" role="tabpanel" id="step5">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/mobile.png" alt="" />
+															<img src="/images/mobile.png" alt="" />
 														</div>
 														<div class="mobile-right ">
 															<h4>How Much To Recharge?</h4>
@@ -637,7 +508,7 @@
 												<div class="tab-pane active" role="tabpanel" id="step6">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/dth.png" alt="" />
+															<img src="/images/dth.png" alt="" />
 														</div>
 														<div class="mobile-right ">
 															<h4>Pay your DTH bill. Which operator?</h4>
@@ -659,7 +530,7 @@
 												<div class="tab-pane" role="tabpanel" id="step7">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/dth.png" alt="" />
+															<img src="/images/dth.png" alt="" />
 														</div>
 														<div class="mobile-right">
 															<h4>What's your DTH Number?</h4>
@@ -676,7 +547,7 @@
 												<div class="tab-pane" role="tabpanel" id="step8">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/dth.png" alt="" />
+															<img src="/images/dth.png" alt="" />
 														</div>
 														<div class="mobile-right ">
 															<h4>How Much To Recharge?</h4>
@@ -741,7 +612,7 @@
 												<div class="tab-pane active" role="tabpanel" id="step9">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/usb.png" alt="" />
+															<img src="/images/usb.png" alt="" />
 														</div>
 														<div class="mobile-right ">
 															<h4>Enter your data card number</h4>
@@ -756,7 +627,7 @@
 												<div class="tab-pane" role="tabpanel" id="step10">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/usb.png" alt="" />
+															<img src="/images/usb.png" alt="" />
 														</div>
 														<div class="mobile-right ">
 															<h4>Which operator?</h4>
@@ -794,7 +665,7 @@
 												<div class="tab-pane" role="tabpanel" id="step11">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/usb.png" alt="" />
+															<img src="/images/usb.png" alt="" />
 														</div>
 														<div class="mobile-right ">
 															<h4>How much to recharge?</h4>
@@ -859,7 +730,7 @@
 												<div class="tab-pane active" role="tabpanel" id="step12">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/landline.png" alt="" />
+															<img src="/images/landline.png" alt="" />
 														</div>
 														<div class="mobile-right">
 															<h4>Pay your landline bill.Which Provider?</h4>
@@ -880,7 +751,7 @@
 												<div class="tab-pane" role="tabpanel" id="step13">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/landline.png" alt="" />
+															<img src="/images/landline.png" alt="" />
 														</div>
 														<div class="mobile-right">
 															<h4>Telephone Number</h4>
@@ -898,7 +769,7 @@
 												<div class="tab-pane" role="tabpanel" id="step14">
 													<div class="mobile-grids">
 														<div class="mobile-left text-center">
-															<img src="images/landline.png" alt="" />
+															<img src="/images/landline.png" alt="" />
 														</div>
 														<div class="mobile-right ">
 															<h4>How much did you wish to pay?</h4>
@@ -1001,10 +872,10 @@
 			<!-- //signup -->
 <div class="content-bottom-two">
 		<div class="col-md-6 content-left text-center">
-			<img src="images/bbb5.png" alt="" />
+			<img src="/images/bbb5.png" alt="" />
 		</div>
 		<div class="col-md-6 content-right text-center">
-			<img src="images/bbb3.png" alt="" />
+			<img src="/images/bbb3.png" alt="" />
 		</div>
 		<div class="clearfix"></div>
 		<div class="btm-pos">
@@ -1080,7 +951,7 @@
 	</div>
 </div>
 <!-- for bootstrap working -->
-		<script src="js/bootstrap.js"></script>
+		<script src="/js/bootstrap.js"></script>
 <!-- //for bootstrap working -->
 </body>
 </html>

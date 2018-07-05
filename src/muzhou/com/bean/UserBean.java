@@ -10,7 +10,7 @@ public class UserBean {
     private int contribute;
     private String school;
     private String major;
-    private int telephone;
+    private String telephone;
 
     public void setUserId(int userId)
     {
@@ -77,11 +77,11 @@ public class UserBean {
         return school;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 

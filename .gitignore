@@ -8,42 +8,8 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
-<<<<<<< HEAD
 
 # Compiled class files
-=======
- 
-# About IntelliJ
-*.iml
-/.idea/
-/out/
- 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
- 
-# macOS
-.DS_Store
- 
-# CMake
-cmake-build-debug/
- 
-# File-based project format
-*.iws
- 
-# mpeltonen/sbt-idea plugin
-.idea_modules/
- 
-# JIRA plugin
-atlassian-ide-plugin.xml
- 
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
-
-# Compiled class file
->>>>>>> 2fe2f7f7908e22547a564144187f363ab91c450a
 *.class
 
 # Log Files

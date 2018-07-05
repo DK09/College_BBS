@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>我们的网页</title>
+
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="/css/font-awesome.css">
+
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Easy Recharge Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        } </script>
+    <!-- //for-mobile-apps -->
+    <!-- js -->
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+   <!-- <script type="application/x-javascript" src="/js/LoginAjax.js"></script>-->
+    <!-- js -->
+    <script>
+        $(document).ready(function () {
+            console.log("我被调用了");
+           $.ajax({
+               type: "POST",
+               url: "/SessionServlet",
+               data: {"hello":"hello"},
+               dataType: "json",
+               contentType: "application/x-www-form-urlencoded; charset=utf-8",
+               success: function (data) {
+                   if(null!==data.userName)
+                   {
+                       console.log("session存在");
+                       document.getElementById('nav1').innerHTML = " <li><a href=\"#\">主页</a></li>\n" +
+                           "                <li><a href=\"/html/orders.html\">问答社区</a></li>\n" +
+                           "                <li>欢迎你,"+data.userName+" </li>\n"
+                   }
+
+               }
+
+           });
+
+
+
+            //Initialize tooltips
+            $('.nav-tabs > li a[title]').tooltip();
+
+            //Wizard
+            $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+                var $target = $(e.target);
+
+                if ($target.parent().hasClass('disabled')) {
+                    return false;
+                }
+            });
+
+            $(".next-step").click(function (e) {
+
+                var $active = $('.wizard .nav-tabs li.active');
+                $active.next().removeClass('disabled');
+                nextTab($active);
+
+            });
+            $(".prev-step").click(function (e) {
+
+                var $active = $('.wizard .nav-tabs li.active');
+                prevTab($active);
+
+            });
+        });
+        function nextTab(elem) {
+            $(elem).next().find('a[data-toggle="tab"]').click();
+        }
+
+        function prevTab(elem) {
+            $(elem).prev().find('a[data-toggle="tab"]').click();
+        }
+
+        function scrollTo(elem, speed) {
+            if (!speed) speed = 300;
+            if (!elem) {
+                $("html,body").animate({scrollTop: 0}, speed);
+            } else {
+                if (elem.length > 0) $("html,body").animate({scrollTop: $(elem).offset().top}, speed);
+            }
+            return false;
+        }
+
+        function click_scroll(elem) {
+            var scroll_offset = $(elem).offset(); //得到pos这个div层的offset，包含两个值，top和left
+            $("body,html").animate({
+                scrollTop: scroll_offset.top //让body的scrollTop等于pos的top，就实现了滚动
+            }, 500);
+        }
+
+        function ajaxAll() {
+
+            $.ajax({
+                type: "POST",
+                url: "/LoginServlet?Login=1",
+                data: $('#loginForm').serialize(),
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (data) {
+                    if(data.checkName === "0")
+                    {
+                        document.getElementById("nameWrong").style.display = "";
+                        document.getElementById("nameCorrect").style.display = "none";
+                    }
+                    else
+                    {
+                        document.getElementById("nameWrong").style.display = "none";
+                        document.getElementById("nameCorrect").style.display = "";
+                        if(data.checkPass === "1")
+                        {
+                            console.log("我登录了");
+                            location.reload();
+                        }
+                    }
+
+                }
+            })
+        }
+
+        function ajaxName() {
+            $.ajax({
+                type: "POST",
+                url: "/LoginServlet?Login=0",
+                data: $('#loginForm').serialize(),
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (data) {
+                    if(data.checkName === "0")
+                    {
+                        document.getElementById("nameWrong").style.display = "";
+                        document.getElementById("nameCorrect").style.display = "none";
+                    }
+                    else
+                    {
+                        document.getElementById("nameWrong").style.display = "none";
+                        document.getElementById("nameCorrect").style.display = "";
+                    }
+                }
+
+            })
+        }
+
+        function ajaxRegisterAll() {
+            $.ajax({
+                type: "POST",
+                url: "/RegisterServlet?Register=1",
+                data: $('#registerForm').serialize(),
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (data) {
+                    if(data.checkName === "0")
+                    {
+                        document.getElementById("name-duplicate").style.display = "";
+                        document.getElementById("name-Correct").style.display = "none";
+                    }
+                    else
+                    {
+                        if(data.checkName === "2")
+                        {
+                            document.getElementById("name-duplicate").style.display = "none";
+                            document.getElementById("name-Correct").style.display = "none";
+                        }
+                        else
+                        {
+                            document.getElementById("name-duplicate").style.display = "none";
+                            document.getElementById("name-Correct").style.display = "";
+                        }
+
+                        if( data.checkPass === "2")
+                        {
+                            document.getElementById("password-invalid").style.display = "none";
+                            document.getElementById("password").style.display = "none";
+                            if(data.checkConfirm === "2")
+                            {
+                                document.getElementById("password-different").style.display = "none";
+                                document.getElementById("password-same").style.display = "none";
+                            }
+                            else
+                            {
+                                document.getElementById("password-different").style.display = "none";
+                                document.getElementById("password-same").style.display = "";
+                            }
+                        }
+                        else if(data.checkPass === "0")
+                        {
+                            document.getElementById("password-invalid").style.display = "";
+                            document.getElementById("password").style.display = "none";
+
+                        }
+                        else
+                        {
+                            document.getElementById("password-invalid").style.display = "none";
+                            document.getElementById("password").style.display = "";
+                            if(data.checkConfirm === "0")
+                            {
+                                document.getElementById("password-different").style.display = "";
+                                document.getElementById("password-same").style.display = "none";
+
+                            }
+
+                            else
+                            {
+                                document.getElementById("password-different").style.display = "none";
+                                document.getElementById("password-same").style.display = "";
+                            }
+
+                        }
+
+                    }
+
+                    if(data.jump === "1")
+                    {
+
+                    }
+
+                }})
+        }
+        function ajaxRegisterName() {
+            $.ajax({
+                type: "POST",
+                url: "/RegisterServlet?Register=0",
+                data: $('#registerForm').serialize(),
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (data) {
+
+                    if(data.checkName === "0")
+                    {
+                        document.getElementById("name-duplicate").style.display = "";
+                        document.getElementById("name-Correct").style.display = "none";
+                    }
+                    else
+                    {
+                        if(data.checkName === "2")
+                        {
+                            document.getElementById("name-duplicate").style.display = "none";
+                            document.getElementById("name-Correct").style.display = "none";
+                        }
+                        else
+                        {
+                            document.getElementById("name-duplicate").style.display = "none";
+                            document.getElementById("name-Correct").style.display = "";
+                        }
+
+                        if( data.checkPass === "2")
+                        {
+                            document.getElementById("password-invalid").style.display = "none";
+                            document.getElementById("password").style.display = "none";
+                            if(data.checkConfirm === "2")
+                            {
+                                document.getElementById("password-different").style.display = "none";
+                                document.getElementById("password-same").style.display = "none";
+                            }
+                            else
+                            {
+                                document.getElementById("password-different").style.display = "none";
+                                document.getElementById("password-same").style.display = "";
+                            }
+                        }
+                        else if(data.checkPass === "0")
+                        {
+                            document.getElementById("password-invalid").style.display = "";
+                            document.getElementById("password").style.display = "none";
+
+                        }
+                        else
+                        {
+                            document.getElementById("password-invalid").style.display = "none";
+                            document.getElementById("password").style.display = "";
+                            if(data.checkConfirm === "0")
+                            {
+                                document.getElementById("password-different").style.display = "";
+                                document.getElementById("password-same").style.display = "none";
+
+                            }
+
+                                else
+                                {
+                                    document.getElementById("password-different").style.display = "none";
+                                    document.getElementById("password-same").style.display = "";
+                                }
+
+                        }
+
+                    }
+                }})
+        }
+
+
+
+
+        function getCookie(cookie_name) {
+
+            var allcookies = document.cookie;
+
+            var cookie_pos = allcookies.indexOf(cookie_name);
+
+            if (cookie_pos != -1) {
+
+                cookie_pos += cookie_name.length + 1;
+
+                var cookie_end = allcookies.indexOf(";", cookie_pos);
+
+                if (cookie_end == -1) {
+
+                    cookie_end = allcookies.length;
+
+                }
+
+                var value = unescape(allcookies.substring(cookie_pos, cookie_end));
+
+            }
+
+            return value;
+
+        }
+        function clearAllCookie() {
+            var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+            if(keys) {
+                for(var i = keys.length; i--;)
+                    document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+
+<div class="banner">
+    <div class="header">
+        <div class="logo">
+            <h1><a href="index.html"><i><img src="/images/logo.png" alt=" "/></i> 求知现场</a></h1>
+        </div>
+        <div class="top-nav">
+            <span class="menu"><img src="/images/menu.png" alt=" "/></span>
+            <ul class="nav1" id="nav1">
+                <li><a href="#">主页</a></li>
+                <li><a href="/html/orders.html">问答社区</a></li>
+                <li><a href="#" id="loginBtn" data-toggle="modal" data-target="#myModal1">登录</a></li>
+                <li><a href="#" id="registerBtn" data-toggle="modal" data-target="#myModal2">注册</a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $("span.menu").click(function () {
+                    $("ul.nav1").slideToggle(300, function () {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- /script-for-menu -->
+        </div>
+        <!-- start search-->
+        <div class="search-box">
+            <div id="sb-search" class="sb-search">
+                <form>
+                    <input class="sb-search-input" placeholder="输入搜索关键字..." type="search" name="search" id="search">
+                    <input class="sb-search-submit" type="submit" value="">
+                    <span class="sb-icon-search"> </span>
+                </form>
+            </div>
+        </div>
+        <!-- search-scripts -->
+        <script src="/js/classie.js"></script>
+        <script src="/js/uisearch.js"></script>
+        <script>
+            new UISearch(document.getElementById('sb-search'));
+        </script>
+        <!-- //search-scripts -->
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="container">
+        <div class="banner-info">
+            <h3>在这个求知现场,开始你的求知之旅</h3>
+        </div>
+        <div class="buttons">
+            <ul>
+                <li><a class="hvr-shutter-in-vertical" href="javascript:click_scroll('#details');">了解更多</a></li>
+                <li><a class="hvr-shutter-in-vertical" href="javascript:click_scroll('#team');">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="details" class="content-bottom">
+    <div class="btm-grids">
+        <div class="col-md-4 btm-grid back-col1 text-center">
+            <img src="/images/question.png" alt=""/>
+        </div>
+        <div class="col-md-4 btm-grid btm-wid">
+            <h3>开放的大学生知识交互平台</h3>
+            <p>大学生在这里传递知识和经验，任何关于专业的知识都能在这里得到解答</p>
+        </div>
+        <div class="col-md-4 btm-grid back-col2 text-center">
+            <img src="/images/anwser.png" alt=""/>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="coupons">
+    <div class="container">
+        <div class="coupons-grids text-center">
+            <div class="col-md-3 coupons-gd">
+                <h3>请根据以下提示<span>开始交互之旅</span></h3>
+            </div>
+            <div class="col-md-3 coupons-gd">
+                <h4><span><img alt=" " src="/images/web.png"></span></h4>
+                <p>你可以选择是否要进行登录操作</p>
+            </div>
+            <div class="col-md-3 coupons-gd">
+                <h4><span><img alt=" " src="/images/credit.png"></span></h4>
+                <p>点击社交平台阅览所有问题，并选择你关注的专业</p>
+            </div>
+            <div class="col-md-3 coupons-gd">
+                <h4><span><img alt=" " src="/images/security.png"></span></h4>
+                <p>如果你有问题请点击提问</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div id="team" class="content-bottom-two">
+    <div class="col-md-6 content-left text-center">
+        <img alt="" src="/images/小黄人1.png">
+    </div>
+    <div class="col-md-6 content-right text-center">
+        <img alt="" src="/images/小黄人2.png">
+    </div>
+    <div class="clearfix"></div>
+    <div class="btm-pos">
+        <h3>成员简介</h3>
+        <table>
+            <thead>
+            <tr>
+                <th width="20%">姓名</th>
+                <th width="30%">职位</th>
+                <th width="30%">性格</th>
+                <th width="30%">联系方式</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>袁楷航</td>
+                <td>技术主管</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>魏冕</td>
+                <td>PO</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>张浩森</td>
+                <td>Team成员</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>吴勇清</td>
+                <td>Team成员</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>杨凡</td>
+                <td>Team成员</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>吴运晨</td>
+                <td>Master</td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="footer">
+    <div class="QR">
+        <img alt="" src="/images/tank.jpg">
+    </div>
+    <div class="container">
+        <h2>有意者扫码入群</h2>
+
+        <p>Copyright©2018-3000武汉大学逐梦代码圈</a>网络科技小组 “半圈”所有</p>
+        <p>经营理念：自强、弘毅、求是、拓新</p>
+        <p>****经营许可</p>
+    </div>
+
+</div>
+<!-- login -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-info">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-spa">
+                <div class="login-grids">
+                    <div class="login">
+                        <div class="login-right">
+                            <form id="loginForm" onsubmit="return false">
+                                <h3  style="text-align:center;">登录</h3>
+                                <div class="pom-agile" style="width: 100%;display: inline-flex;">
+                                    <span class="fa fa-user-o" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
+                                    <div style="float:right;width: 82%">
+                                        <input type="text" class="phone" name="username" placeholder="请输入用户名或邮箱" onfocus="this.placeholder = '' " onblur="this.placeholder = '请输入用户名或邮箱';ajaxName() " required>
+                                    </div>
+                                    <span id="nameCorrect" aria-hidden="true" class="fa fa-check"
+                                          style="display:none;font-size:25px;width:10%;color:#00be00;float: right;margin-top: 27px;padding-left:5px;">
+												</span>
+                                    <span title="用户不存在" id="nameWrong" aria-hidden="true" class="fa fa-exclamation-triangle"
+                                          style="display:none;font-size:25px;width:10%;color:red;float: right;margin-top: 27px;padding-left:5px;">
+												</span>
+                                </div>
+                                <div class="pom-agile" style="width: 100%;display: inline-flex;">
+                                    <span class="fa fa-key" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
+                                    <div style="float:right;width: 82%">
+                                        <input type="password" class="password" name="password" placeholder="密码" onfocus="this.placeholder = '' " onblur="this.placeholder = '密码' " required>
+                                    </div>
+                                </div>
+                                <div class="single-bottom" style="margin-left:8%;margin-top:1px">
+                                    <input type="checkbox"  id="brand" value="">
+                                    <label for="brand"><span></span>记住我.</label>
+                                </div>
+                                <input type="submit" onclick="ajaxAll()" value="登录" >
+                            </form>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <p>登录即代表你同意此网站的 <span>相关政策</span> and <span>隐私协议</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //login -->
+<!-- signup -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-info">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-spa">
+                <div class="login-grids">
+                    <div class="login">
+                        <div class="login-right">
+                            <form id="registerForm" onsubmit="return false">
+                                <h3 style="text-align:center;">注册</h3>
+                                <div class="pom-agile" style="width: 100%; display: inline-flex;">
+                                    <span class="fa fa-user-o" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
+                                    <div style="float:left;width: 82%">
+                                        <input type="text" class="userName" name="username" placeholder="用户名" onfocus="this.placeholder = '' " onblur="this.placeholder = '用户名';ajaxRegisterName() " required>
+                                    </div>
+                                    <span id="name-Correct"  aria-hidden="true" class="fa fa-check"
+                                          style="display:none;font-size:25px;width:10%;color:#00be00;float: right;margin-top: 27px;padding-left:5px;">
+												</span>
+                                    <span title="用户名已存在" id="name-duplicate" aria-hidden="true" class="fa fa-exclamation-triangle"
+                                          style="display:none;font-size:25px;width:10%;color:red;float: right;margin-top: 27px;padding-left:5px;">
+												</span>
+                                    <!--                                <span id="nameWrong" class="fa fa-close"
+                                                                          style="font-size:25px;margin-left: 5px; color:red;float: right;display: none;"></span>-->
+                                </div>
+
+                                <div class="pom-agile" style="width: 100%;display: inline-flex;">
+                                    <span class="fa fa-phone" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
+                                    <div style="float:right;width: 82%">
+                                        <input type="text" class="phone" name="telephone" placeholder="手机号码" onfocus="this.placeholder = '' " onblur="this.placeholder = '手机号码' " required>
+                                    </div>
+                                    <span id="phone-valid" aria-hidden="true" class="fa fa-check"
+                                          style="display:none;font-size:25px;width:10%;color:#00be00;float: right;margin-top: 27px;padding-left:5px;">
+												</span>
+                                    <span title="该号码已存在" id="phone-duplicate" aria-hidden="true" class="fa fa-exclamation-triangle"
+                                          style="display:none;font-size:25px;width:10%;color:red;float: right;margin-top: 27px;padding-left:5px;">
+												</span>
+                                </div>
+                                <div class="pom-agile" style="width: 100%;display: inline-flex;">
+                                    <span class="fa fa-envelope-o" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
+                                    <div style="float:right;width: 82%">
+                                        <input type="text" class="phone" name="email" placeholder="邮箱" onfocus="this.placeholder = '' " onblur="this.placeholder = '邮箱' " required>
+                                    </div>
+                                    <span id="email-valid" aria-hidden="true" class="fa fa-check"
+                                          style="display:none;font-size:25px;width:10%;color:#00be00;float: right;margin-top: 27px;padding-left:5px;">
+												</span>
+                                    <span title="该邮箱已存在" id="email-duplicate" aria-hidden="true" class="fa fa-exclamation-triangle"
+                                          style="display:none;font-size:25px;width:10%;color:red;float: right;margin-top: 27px;padding-left:5px;">
+												</span>
+                                </div>
+                                <div class="pom-agile" style="width: 100%;display: inline-flex;">
+                                    <span class="fa fa-key" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
+                                    <div style="float:right;width: 82%">
+                                        <input type="password" class="password" name="password" placeholder="密码" onfocus="this.placeholder = '' " onblur="this.placeholder = '密码' ;ajaxRegisterName()" required>
+                                    </div>
+                                    <span id="password" aria-hidden="true" class="fa fa-check"
+                                          style="display:none;font-size:25px;width:10%;color:#00be00;float: right;margin-top: 27px;padding-left:5px;">
+												</span>
+                                    <span title="密码格式不正确" id="password-invalid" aria-hidden="true" class="fa fa-exclamation-triangle"
+                                          style="display:none;font-size:25px;width:10%;color:red;float: right;margin-top: 27px;padding-left:5px;">
+												</span>
+                                </div>
+                                <div class="pom-agile" style="width: 100%;display: inline-flex;">
+                                    <span class="fa fa-key" aria-hidden="true" style="float:left;width: 8%;margin-top: 30px;"></span>
+                                    <div style="float:right;width: 82%">
+                                        <input type="password" class="password-ok" name="passwordConfirm" placeholder="确认密码" onfocus="this.placeholder = '' " onblur="this.placeholder = '确认密码';ajaxRegisterName() " required>
+                                    </div>
+                                    <span id="password-same" aria-hidden="true" class="fa fa-check"
+                                          style="display:none;font-size:25px;width:10%;color:#00be00;float: right;margin-top: 27px;padding-left:5px;">
+												</span>
+                                    <span title="两次输入的密码不同" id="password-different" aria-hidden="true" class="fa fa-exclamation-triangle"
+                                          style="display:none;font-size:25px;width:10%;color:red;float: right;margin-top: 27px;padding-left:5px;">
+												</span>
+                                </div>
+                                <input type="submit" onclick="ajaxRegisterAll()" value="注册" >
+                            </form>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <p>登录即代表你同意此网站的 <span>相关政策</span> and <span>隐私协议</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //signup -->
+<!-- for bootstrap working -->
+<script src="/js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+</body>
+</html>

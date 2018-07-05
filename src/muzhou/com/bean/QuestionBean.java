@@ -129,4 +129,24 @@ public class QuestionBean {
     public void setVisible(String visible) {
         this.visible = visible;
     }
+
+    @Override
+    public String toString() {
+        return "QuestionBean{" +
+                "qid=" + qid +
+                ", userId=" + userId +
+                ", category='" + category + '\'' +
+                ", keyword='" + keyword + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", time=" + time +
+                ", integral=" + integral +
+                ", likeCount=" + likeCount +
+                ", lastAnswerTime=" + lastAnswerTime +
+                ", answerCount=" + answerCount +
+                ", visitCount=" + visitCount +
+                ", bestAid=" + bestAid +
+                ", visible='" + visible + '\'' +
+                '}';
+    }
 }

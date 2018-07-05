@@ -11,7 +11,7 @@ public class DbConnectionUtil {
 	private static DataSource dataSource = null;
 	private static ThreadLocal<Connection> threadLocal = null;
 	static {
-		dataSource = new ComboPooledDataSource("collegeBBS");
+		dataSource = new ComboPooledDataSource();
 		threadLocal = new ThreadLocal<Connection>();
 	}
 
