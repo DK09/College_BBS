@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orders</title>
+
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/buttons.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/css/mystyle.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="/js/JQuery.js"></script>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Easy Recharge Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- //for-mobile-apps -->
+    <!-- js -->
+    <!--animate-->
+    <link href="/css/animate.css" rel="stylesheet" type="text/css" media="all">
+    <script src="/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--//end-animate-->
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <!-- js -->
+    <script>
+        $(document).ready(function () {
+            //Initialize tooltips
+            $('.nav-tabs > li a[title]').tooltip();
+
+            //Wizard
+            $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+                var $target = $(e.target);
+
+                if ($target.parent().hasClass('disabled')) {
+                    return false;
+                }
+            });
+
+            $(".next-step").click(function (e) {
+
+                var $active = $('.wizard .nav-tabs li.active');
+                $active.next().removeClass('disabled');
+                nextTab($active);
+
+            });
+            $(".prev-step").click(function (e) {
+
+                var $active = $('.wizard .nav-tabs li.active');
+                prevTab($active);
+
+            });
+            createPageAjax(1);
+        });
+
+        function nextTab(elem) {
+            $(elem).next().find('a[data-toggle="tab"]').click();
+        }
+
+        function prevTab(elem) {
+            $(elem).prev().find('a[data-toggle="tab"]').click();
+        }
+
+        function setOver(name, cursel, n) {
+            for (i = 1; i <= n; i++) {
+                var menu = document.getElementById(name + i);
+                menu.className = i == cursel ? "hover" : "";
+            }
+        }
+
+        function setOut(name, cursel, n) {
+            for (i = 1; i <= n; i++) {
+                var menu = document.getElementById(name + i);
+                menu.className = i == cursel ? "" : "hover";
+            }
+        }
+
+        function MM_showHideLayers() { //v9.0
+            var i, p, v, obj, args = MM_showHideLayers.arguments;
+            for (i = 0; i < (args.length - 2); i += 3)
+                with (document) if (getElementById && ((obj = getElementById(args[i])) != null)) {
+                    v = args[i + 2];
+                    if (obj.style) {
+                        obj = obj.style;
+                        v = (v == 'show') ? 'visible' : (v == 'hide') ? 'hidden' : v;
+                    }
+                    obj.visibility = v;
+                }
+        }
+
+        function change() {
+            var x = document.getElementById("field2");
+            var y = document.getElementById("second");
+            y.options.length = 0; // 清除second下拉框的所有内容
+            if (x.selectedIndex == 0) {
+                y.options.add(new Option("马克思主义"));
+                y.options.add(new Option("金融工程", false, true));
+                y.options.add(new Option("哲学"));
+                y.options.add(new Option("音乐"));
+            }
+
+            if (x.selectedIndex == 1) {
+                y.options.add(new Option("刑法"));
+                y.options.add(new Option("民法", false, true));
+                y.options.add(new Option("婚姻法"));
+                y.options.add(new Option("未成年人保护法"));
+            }
+
+            if (x.selectedIndex == 2) {
+                y.options.add(new Option("高数"));
+                y.options.add(new Option("大物", false, true));
+                y.options.add(new Option("线代"));
+                y.options.add(new Option("概率论"));
+            }
+            if (x.selectedIndex == 3) {
+                y.options.add(new Option("土木"));
+                y.options.add(new Option("建筑", false, true));
+                y.options.add(new Option("水利"));
+                y.options.add(new Option("机电"));
+            }
+            if (x.selectedIndex == 4) {
+                y.options.add(new Option("内科"));
+                y.options.add(new Option("外科", false, true));
+                y.options.add(new Option("鼻腔科"));
+                y.options.add(new Option("兽医"));
+            }
+            if (x.selectedIndex == 5) {
+                y.options.add(new Option("水果"));
+                y.options.add(new Option("粗粮", false, true));
+                y.options.add(new Option("药物"));
+                y.options.add(new Option("保护"));
+            }
+            if (x.selectedIndex == 6) {
+                y.options.add(new Option("其他", false, true));
+            }
+        }
+
+        var numOfLabel = 0;
+
+        function insertLabel() {
+            if (numOfLabel < 5) {
+
+                var li13 = document.getElementById("li13");
+                //创建li
+
+
+                var li15 = document.createElement("li");
+                li15.setAttribute('id', numOfLabel + 5);
+
+                //创建文本
+                var text15 = document.createElement('input');
+                text15.setAttribute('type', 'text');//输入框的类型
+                text15.setAttribute('name', "Labels");//输入框的名字
+                text15.setAttribute('id', numOfLabel);//输入框的id
+
+                //把文本添加到li下面 appendChild
+                li15.appendChild(text15);
+                //获取到ul
+                var ul21 = document.getElementById("ulid21");
+
+                //insertBefore(newNode,oldNode)
+                ul21.appendChild(li15);
+
+                var butt = document.createElement("input");
+                butt.type = "button";
+                butt.value = "×";
+                butt.id = numOfLabel - 5;
+                butt.onclick = function () {
+                    var m = document.getElementById(4 + numOfLabel);
+                    m.parentNode.removeChild(m);
+                    numOfLabel--;
+                }
+                var licontent = document.getElementById(5 + numOfLabel);
+                licontent.appendChild(butt);
+
+                numOfLabel = numOfLabel + 1;
+            } else {
+                alert("最多只能添加5个标签");
+            }
+
+        }
+
+
+        function questionAjax() {
+
+            $.ajax({
+                type: "POST",
+                url: "/QuestionServlet",
+                data: $('#questionForm').serialize(),
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (data) {
+
+                    if (data.jump === "1") {
+                        if (data.ifEmpty === "1") {
+                            console.log("我成功了");
+                        }
+                        else {
+                            //console.log("名称和内容都是空");
+                            alert("问题名称和内容不能为空");
+                        }
+
+                    }
+                    else {
+                        $('#loginBtn').click();
+                    }
+                }
+            });
+        }
+
+        $(document).on('click', '.a_question', function () {
+
+            var qid = $(this).attr("qid");
+            sessionStorage.setItem("qid",qid);
+            sessionStorage.setItem("page","/html/reply.html");
+            window.open("/html/index.html");
+            sessionStorage.setItem("page","/html/community.html");
+
+
+        });
+
+        $(document).on('click', '.a_page', function () {
+
+            var page = $(this).attr("page");
+            var solved = $(this).attr("solved");
+            var major = sessionStorage.getItem("major");
+
+            if (null === major) {
+                $.ajax({
+                    type: "POST",
+                    url: "/PageServlet",
+                    data: {"page": page, "solved": solved},
+                    dataType: "json",
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    success: function (data) {
+                        var list = data.list;
+                        if (solved === "0") {
+                            createPageUnsolved(list, data.totalPage);
+                        }
+                        else if (solved === "1") {
+                            createPageSolved(list, data.totalPage);
+                        }
+
+
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "/PageMajorServlet",
+                    data: {"page": page, "solved": solved, "major": major},
+                    dataType: "json",
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    success: function (data) {
+                        var list = data.list;
+                        if (solved === "0") {
+                            createPageUnsolved(list, data.totalPage);
+                        }
+                        else if (solved === "1") {
+                            createPageSolved(list, data.totalPage);
+                        }
+
+                    }
+                });
+            }
+        });
+
+        function createPageAjax(solved) {
+
+            var major = sessionStorage.getItem("major");
+            if (null === major) {
+                $.ajax({
+                    type: "POST",
+                    url: "/PageServlet",
+                    data: {"page": 1, "solved": solved},
+                    dataType: "json",
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    success: function (data) {
+                        var list = data.list;
+                        if (solved === 0) {
+                            createPageUnsolved(list, data.totalPage);
+                        }
+                        else if (solved === 1) {
+                            createPageSolved(list, data.totalPage);
+                        }
+
+
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "/PageMajorServlet",
+                    data: {"page": 1, "solved": solved, "major": major},
+                    dataType: "json",
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    success: function (data) {
+                        var list = data.list;
+                        if (solved === 0) {
+                            createPageUnsolved(list, data.totalPage);
+                        }
+                        else if (solved === 1) {
+                            createPageSolved(list, data.totalPage);
+                        }
+
+                    }
+                });
+            }
+
+
+        }
+
+
+        function createPageSolved(list, totalPage) {
+            var data = [];
+
+            for (var i = 0; i < list.length; i++) {
+                data.push('<div class="gd-desc-btm">' +
+                    '<div class="gd-desc sec-one">' +
+                    '<p>' + list[i].title + '</p>' +
+                    '</div>' +
+                    '<div class="gd-desc sec-two">' +
+                    '<p>'
+                    + list[i].username +
+                    '</p>' +
+                    '</div>' +
+                    '<div class="gd-desc sec-three">' +
+                    '<p>'
+                    + list[i].integral +
+                    '</p>' +
+                    '</div>' +
+                    '<div class="gd-desc sec-four">' +
+                    '<a href="#" class="a_question" qid='+list[i].qid+' >'
+                    + "查看" +
+                    '</a>' +
+                    '</div>' +
+                    '<div class="clearfix">' +
+                    '</div>' +
+                    '</div>')
+
+            }
+            data.push('<div class="page">');
+            for (var j = 0; j < totalPage; j++) {
+                var k = j + 1;
+                data.push('<button class="a_page" solved = 1 page = ' + k + '>' + k + '</button>');
+            }
+            data.push('</div>');
+
+            document.getElementById('select_Content1').innerHTML = data.join('');
+
+
+        }
+
+        function createPageUnsolved(list, totalPage) {
+            var data = [];
+            for (var i = 0; i < list.length; i++) {
+                data.push('<div class="gd-desc-btm">' +
+                    '<div class="gd-desc sec-one">' +
+                    '<p>' + list[i].title + '</p>' +
+                    '</div>' +
+                    '<div class="gd-desc sec-two">' +
+                    '<p>'
+                    + list[i].username +
+                    '</p>' +
+                    '</div>' +
+                    '<div class="gd-desc sec-three">' +
+                    '<p>'
+                    + list[i].integral +
+                    '</p>' +
+                    '</div>' +
+                    '<div class="gd-desc sec-four">' +
+                    '<a href="#" class="a_question" qid='+list[i].qid+' >'
+                    + "查看" +
+                    '</a>' +
+                    '</div>' +
+                    '<div class="clearfix">' +
+                    '</div>' +
+                    '</div>')
+
+            }
+            data.push('<div class="page">');
+            for (var j = 0; j < totalPage; j++) {
+                var k = j + 1;
+                data.push('<button class="a_page" solved = 0 page = ' + k + '>' + k + '</button>');
+            }
+            data.push('</div>');
+
+            document.getElementById('select_Content2').innerHTML = data.join('');
+
+        }
+
+        $(document).on('click', '.a_major', function () {
+
+            var major = $(this).attr("name");
+            sessionStorage.setItem("major", major);
+            $.ajax({
+                type: "POST",
+                url: "/PageMajorServlet",
+                data: {"page": 1, "solved": 1, "major": major},
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (data) {
+
+                    var list = data.list;
+                    createPageSolved(list, data.totalPage);
+                    $('#all-tab').click();
+
+                }
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+
+<div class="set-content">
+
+    <div class="container">
+        <div class="question-menu">
+            <h3>专业</h3>
+            <table width="90%" border="0">
+                <tr>
+                    <td class="huixuxian">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td width="100%">
+                                    <ul>
+                                        <li id="shone1"
+                                            onmouseover="setOver('shone',1,1);MM_showHideLayers('apDiv1','','show','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')"
+                                            onmouseout="setOut('shone',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')">
+                                            文
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td valign="top">
+                                    <div id="apDiv1"
+                                         onmouseover="setOver('shone',1,1);MM_showHideLayers('apDiv1','','show','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')"
+                                         onmouseout="setOut('shone',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')">
+                                        <table width="300px" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td><a class="a_major" href="#" name="金融工程">金融工程</a></td>
+                                                <td><a class="a_major" href="#" name="马克思主义">马克思主义</a></td>
+                                                <td><a class="a_major" href="#" name="哲学">哲学</a></td>
+                                                <td><a class="a_major" href="#" name="音乐">音乐</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a class="a_major" href="#" name="金融工程">金融工程</a></td>
+                                                <td><a class="a_major" href="#" name="马克思主义">马克思主义</a></td>
+                                                <td><a class="a_major" href="#" name="哲学">哲学</a></td>
+                                                <td><a class="a_major" href="#" name="音乐">音乐</a></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="huixuxian">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td width="100%">
+                                    <ul>
+                                        <li id="shtwo1"
+                                            onmouseover="setOver('shtwo',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','show','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')"
+                                            onmouseout="setOut('shtwo',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')">
+                                            法
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td valign="top">
+                                    <div id="apDiv2"
+                                         onmouseover="setOver('shtwo',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','show','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')"
+                                         onmouseout="setOut('shtwo',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')">
+                                        <table width="300px" border="0" cellspacing="0" cellpadding="3">
+                                            <tr>
+                                                <td><a class="a_major" href="#" name="经济法">经济法</a></td>
+                                                <td><a class="a_major" href="#" name="刑法">刑法</a></td>
+                                                <td><a class="a_major" href="#" name="未成年人保护法">未成年人保护法</a></td>
+                                                <td><a class="a_major" href="#" name="民法">民法</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a class="a_major" href="#" name="经济法">经济法</a></td>
+                                                <td><a class="a_major" href="#" name="刑法">刑法</a></td>
+                                                <td><a class="a_major" href="#" name="未成年人保护法">未成年人保护法</a></td>
+                                                <td><a class="a_major" href="#" name="民法">民法</a></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="huixuxian">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td width="100%">
+                                    <ul>
+                                        <li id="shthree1"
+                                            onmouseover="setOver('shthree',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','show','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')"
+                                            onmouseout="setOut('shthree',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')">
+                                            理
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td valign="top">
+                                    <div id="apDiv3"
+                                         onmouseover="setOver('shthree',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','show','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')"
+                                         onmouseout="setOut('shthree',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')">
+                                        <table width="300px" border="0" cellspacing="0" cellpadding="3">
+                                            <tr>
+                                                <td><a class="a_major" href="#" name="高数">高数</a></td>
+                                                <td><a class="a_major" href="#" name="大物">大物</a></td>
+                                                <td><a class="a_major" href="#" name="线代">线代</a></td>
+                                                <td><a class="a_major" href="#" name="概率论">概率论</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a class="a_major" href="#" name="高数">高数</a></td>
+                                                <td><a class="a_major" href="#" name="大物">大物</a></td>
+                                                <td><a class="a_major" href="#" name="线代">线代</a></td>
+                                                <td><a class="a_major" href="#" name="概率论">概率论</a></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="huixuxian">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td width="100%">
+                                    <ul>
+                                        <li id="shfour1"
+                                            onmouseover="setOver('shfour',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','show','apDiv5','','hide','apDiv6','','hide')"
+                                            onmouseout="setOut('shfour',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')">
+                                            工
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td valign="top">
+                                    <div id="apDiv4"
+                                         onmouseover="setOver('shfour',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','show','apDiv5','','hide','apDiv6','','hide')"
+                                         onmouseout="setOut('shfour',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')">
+                                        <table width="300px" border="0" cellspacing="0" cellpadding="3">
+                                            <tr>
+                                                <td><a class="a_major" href="#" name="土木">土木</a></td>
+                                                <td><a class="a_major" href="#" name="建筑">建筑</a></td>
+                                                <td><a class="a_major" href="#" name="水利">水利</a></td>
+                                                <td><a class="a_major" href="#" name="机电">机电</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a class="a_major" href="#" name="土木">土木</a></td>
+                                                <td><a class="a_major" href="#" name="建筑">建筑</a></td>
+                                                <td><a class="a_major" href="#" name="水利">水利</a></td>
+                                                <td><a class="a_major" href="#" name="机电">机电</a></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="huixuxian">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td width="100%">
+                                    <ul>
+                                        <li id="shfive1"
+                                            onmouseover="setOver('shfive',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','show','apDiv6','','hide')"
+                                            onmouseout="setOut('shfive',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')">
+                                            医
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td valign="top">
+                                    <div id="apDiv5"
+                                         onmouseover="setOver('shfive',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','show','apDiv6','','hide')"
+                                         onmouseout="setOut('shfive',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')">
+                                        <table width="300px" border="0" cellspacing="0" cellpadding="3">
+                                            <tr>
+                                                <td><a class="a_major" href="#" name="内科">内科</a></td>
+                                                <td><a class="a_major" href="#" name="外科">外科</a></td>
+                                                <td><a class="a_major" href="#" name="鼻腔科">鼻腔科</a></td>
+                                                <td><a class="a_major" href="#" name="兽医">兽医</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a class="a_major" href="#" name="内科">内科</a></td>
+                                                <td><a class="a_major" href="#" name="外科">外科</a></td>
+                                                <td><a class="a_major" href="#" name="鼻腔科">鼻腔科</a></td>
+                                                <td><a class="a_major" href="#" name="兽医">兽医</a></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="huixuxian">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                            <tr>
+                                <td width="100%">
+                                    <ul>
+                                        <li id="shsix1"
+                                            onmouseover="setOver('shsix',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','show')"
+                                            onmouseout="setOut('shsix',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')">
+                                            农
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td valign="top">
+                                    <div id="apDiv6"
+                                         onmouseover="setOver('shsix',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','show')"
+                                         onmouseout="setOut('shsix',1,1);MM_showHideLayers('apDiv1','','hide','apDiv2','','hide','apDiv3','','hide','apDiv4','','hide','apDiv5','','hide','apDiv6','','hide')">
+                                        <table width="300px" border="0" cellspacing="0" cellpadding="3">
+                                            <tr>
+                                                <td><a class="a_major" href="#" name="水果作物">水果作物</a></td>
+                                                <td><a class="a_major" href="#" name="粗粮作物">粗粮作物</a></td>
+                                                <td><a class="a_major" href="#" name="药作物">药作物</a></td>
+                                                <td><a class="a_major" href="#" name="保护">保护</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a class="a_major" href="#" name="水果作物">水果作物</a></td>
+                                                <td><a class="a_major" href="#" name="粗粮作物">粗粮作物</a></td>
+                                                <td><a class="a_major" href="#" name="药作物">药作物</a></td>
+                                                <td><a class="a_major" href="#" name="保护">保护</a></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+
+        </div>
+        <div class="all-questions-anwsers">
+            <div class="bs-example bs-example-tabs orders-tab" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#solved" onclick="createPageAjax(1)" id="all-tab"
+                                                              role="tab" data-toggle="tab"
+                                                              aria-controls="all" aria-expanded="true">已解决</a></li>
+                    <li role="presentation"><a href="#unsolved" onclick="createPageAjax(0)" role="tab" id="pay-tab"
+                                               data-toggle="tab"
+                                               aria-controls="pay">未解决</a></li>
+                    <li role="presentation"><a href="#create-question" role="tab" id="shop-tab" data-toggle="tab"
+                                               aria-controls="shop">发起问题</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tabs-para tab-pane fade in active" id="solved"
+                         aria-labelledby="all-tab">
+                        <div class="profile-gd">
+                            <div class="gd-desc-gds">
+                                <div class="gd-desc sec-one">
+                                    <h4>问题描述</h4>
+                                </div>
+                                <div class="gd-desc sec-two">
+                                    <h4>来自</h4>
+                                </div>
+                                <div class="gd-desc sec-three">
+                                    <h4>悬赏</h4>
+                                </div>
+                                <div class="gd-desc sec-four">
+                                    <h4>操作</h4>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="select_Content1">
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tabs-para tab-pane fade" id="unsolved" aria-labelledby="pay-tab">
+                        <div class="profile-gd">
+                            <div class="gd-desc-gds">
+                                <div class="gd-desc sec-one">
+                                    <h4>问题描述</h4>
+                                </div>
+                                <div class="gd-desc sec-two">
+                                    <h4>来自</h4>
+                                </div>
+                                <div class="gd-desc sec-three">
+                                    <h4>悬赏</h4>
+                                </div>
+                                <div class="gd-desc sec-four">
+                                    <h4>操作</h4>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="select_Content2">
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tabs-para tab-pane fade" id="create-question"
+                         aria-labelledby="shop-tab">
+                        <div id="make-question">
+                            <form id="questionForm" onsubmit="return false">
+                                <fieldset>
+                                    <legend>问题描述</legend>
+                                    <div class="form-row">
+                                        <div class="question-label"><label for="field1"
+                                                                           style="color: black;font-weight:normal">问题名称</label>:
+                                        </div>
+                                        <div class="field-widget"><input name="questionTitle" id="field1"
+                                                                         class="required"
+                                                                         title="Enter your question"/></div>
+                                        <div style="margin-top:10px;">
+                                            <ul id="ulid21" style="float:left;list-style:none;">
+                                                <li id="li11"
+                                                    style="float:left;width:90px;margin-left:0px;margin-right:25px;">
+                                                    添加标签:
+                                                </li>
+                                            </ul>
+                                            <input style="width:30px;height:30px;margin-top:7px;margin-left:10px;padding: 2px"
+                                                   type="button" value="+" onKeypress="if(event.keyCode === 32)event.returnValue = false;"   onclick="insertLabel()"/>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="form-row">
+                                        <div class="requirement-field-label"><label
+                                                style="color: black;font-weight:normal">问题内容</label>:
+                                        </div>
+                                        <div class="field-widget"><textarea class="question-details"
+                                                                            name="questionContent"></textarea></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="question-label"><label
+                                                style="color: black;font-weight:normal;margin-top: 5px;">专业</label>:
+                                        </div>
+                                        <div class="field-widget">
+                                            <select id="field2" name="field2" class="validate-selection"
+                                                    title="选择问题所属的专业" onChange="change()">
+                                                <option selected="selected">文</option>
+                                                <option>法</option>
+                                                <option>理</option>
+                                                <option>工</option>
+                                                <option>医</option>
+                                                <option>农</option>
+                                                <option>其他</option>
+                                            </select>
+                                            <select id="second" name="questionCategory" class="validate-selection">
+                                                <option selected="selected">金融工程</option>
+                                                <option>马克思主义</option>
+                                                <option>哲学</option>
+                                                <option>音乐</option>
+                                            </select>
+                                            <label style="width:80px;margin-left:30px;margin-top:5px;color: black;font-weight:normal">悬赏： </label><input
+                                                id="prizeNum" name="questionIntegral"
+                                                style="margin-top:5px;width:50px;height:25px;" type="number" step="1"
+                                                min="1" max="20" value="1"/>
+                                            <label style="width:200px;margin-top:5px;color: black;font-weight:normal">个积分(最大20)</label></label>
+
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                                <input type="submit" onclick="questionAjax()" class="submit" value="提交"/>
+                                <input class="reset" type="button" value="清空" onclick="reset(); return false"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- for bootstrap working -->
+<script src="/js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+</body>
+</html>

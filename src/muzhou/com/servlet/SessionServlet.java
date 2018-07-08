@@ -1,7 +1,11 @@
 package muzhou.com.servlet;
 
+import muzhou.com.bean.Index;
+import muzhou.com.bean.QuestionBean;
 import muzhou.com.bean.UserBean;
-import muzhou.com.service.UserService;
+
+import muzhou.com.service.QuestionService;
+import muzhou.com.service.serviceImpl.QuestionServiceImpl;
 import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
@@ -9,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+
 @WebServlet(name = "SessionServlet", urlPatterns = {"/SessionServlet"})
 public class SessionServlet extends HttpServlet {
 
@@ -22,16 +28,28 @@ public class SessionServlet extends HttpServlet {
         JSONObject jsonObject = new JSONObject();
 
         PrintWriter out = response.getWriter();
-        System.out.println("我被调用了");
       //  UserService userService = null;
+
+      /*  List<QuestionBean> questionBean = null;
+        QuestionService questionService = new QuestionServiceImpl();
+        questionBean = questionService.getAllQuestion();
+        Index index1 = new Index();
+        index1.writeAllToIndex(questionBean);*/
+
+
         UserBean userBean = null;
         if (null!=request.getSession().getAttribute("user"))
         {
             userBean = (UserBean)request.getSession().getAttribute("user");
-            System.out.println(userBean.getUserName());
-            jsonObject.accumulate("userName", userBean.getUserName());
+            jsonObject.accumulate("userName", userBean.getUserName())
+            .accumulate("ifLogin","1");
             out.print(jsonObject);
         }
+        else
+        {
+            jsonObject.accumulate("ifLogin","0");
+        }
+
      /*   else
         {
             Cookie[] cookies = request.getCookies();

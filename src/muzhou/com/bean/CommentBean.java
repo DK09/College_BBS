@@ -12,6 +12,7 @@ public class CommentBean {
     private Timestamp time;//
     private int likeCount;
     private int unlikeCount;
+    private String visible;
 
     public void setCid(int cid) {
         this.cid = cid;
@@ -77,6 +78,14 @@ public class CommentBean {
         return unlikeCount;
     }
 
+    public void setVisible(String visible) {
+        this.visible = visible;
+    }
+
+    public String getVisible() {
+        return visible;
+    }
+
     @Override
     public String toString() {
         return "CommentBean{" +
@@ -88,6 +97,7 @@ public class CommentBean {
                 ", time=" + time +
                 ", likeCount=" + likeCount +
                 ", unlikeCount=" + unlikeCount +
+                ", visible='" + visible + '\'' +
                 '}';
     }
 }

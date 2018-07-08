@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>reply</title>
+
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/css/mystyle.css" rel="stylesheet" type="text/css" media="all"/>
+
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Easy Recharge Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- //for-mobile-apps -->
+    <!-- js -->
+    <!--animate-->
+    <link href="/css/animate.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/setting.css" rel="stylesheet" type="text/css">
+    <script src="/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <style>
+
+    </style>
+    <!--//end-animate-->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <!-- js -->
+    <script>
+        $(document).ready(function () {
+
+            var qid = sessionStorage.getItem("qid");
+            if(null !== qid)
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "/AnswerServlet",
+                    data: {"qid": qid},
+                    dataType: "json",
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    success: function (data) {
+                        console.log("answerAjax");
+                        console.log(data.quserName);
+                           document.getElementById('quserName').innerText =  data.quserName;
+                           document.getElementById('qtime').innerText = data.qtime;
+                           document.getElementById('qtitle').innerText = data.qtitle;
+                           document.getElementById('qcontent').innerText = data.qcontent;
+                           document.getElementById('qintegral').innerText = data.qintegral+"C";
+
+                    }
+                });
+            }
+
+
+            //Initialize tooltips
+            $('.nav-tabs > li a[title]').tooltip();
+
+            //Wizard
+            $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+                var $target = $(e.target);
+
+                if ($target.parent().hasClass('disabled')) {
+                    return false;
+                }
+            });
+
+            $(".next-step").click(function (e) {
+
+                var $active = $('.wizard .nav-tabs li.active');
+                $active.next().removeClass('disabled');
+                nextTab($active);
+
+            });
+            $(".prev-step").click(function (e) {
+
+                var $active = $('.wizard .nav-tabs li.active');
+                prevTab($active);
+
+            });
+        });
+
+        function nextTab(elem) {
+            $(elem).next().find('a[data-toggle="tab"]').click();
+        }
+
+        function prevTab(elem) {
+            $(elem).prev().find('a[data-toggle="tab"]').click();
+        }
+
+        function getQuestionFrom() {
+
+        }
+
+        function replyAjax() {
+
+            $.ajax({
+                type: "POST",
+                url: "/AnswerServlet",
+                data: $('#questionForm').serialize(),
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (data) {
+
+                    if (data.jump === "1") {
+                        if (data.ifEmpty === "1") {
+                            console.log("我成功了");
+                        }
+                        else {
+                            //console.log("名称和内容都是空");
+                            alert("问题名称和内容不能为空");
+                        }
+
+                    }
+                    else {
+                        $('#loginBtn').click();
+                    }
+                }
+            });
+        }
+
+    </script>
+</head>
+
+<body style="background-color: #DDDDDD">
+
+<div class="body-reply"
+     style="width: 100%; margin-left:auto; margin-right:auto; margin-top:10px;height: 2000px;background-color: #DDDDDD;">
+    <div class="questioner"
+         style="max-height:800px;width: 95%; margin-left:auto; margin-right:auto;margin-top:20px;min-height: 250px;background:#DDDDDD ">
+        <div class="que-infor"
+             style="display:flex;width: 100%;height:70px;background-color:#fff;border-bottom: 1px solid #DDDDDD">
+            <div id="que-head">
+                <img src='/images/userHead.jpg' style='max-width:40px; margin-top:20px;margin-left: 10px;'>
+            </div>
+            <div id="que-name"
+                 style="margin-right:10px;margin-left:10px;height:70px;text-align:center;margin-top:27px;font-weight:bold;">
+                <a id="quserName">用户名</a>
+            </div>
+            <span style="margin-top: 27px;">于</span>
+            <div class="quetime" style="margin-top: 28px;height: 70px;float: right;">
+                <span id="qtime" class="time">时间</span>
+            </div>
+            <span style="margin-top: 27px;">提问</span>
+        </div>
+        <div class="que-que" style="width: 100%;float:right;background-color:#fff;">
+            <div class="que-textbox"
+                 style="width:90%;background-color:#fff;margin-left:auto; margin-right:auto;margin-top:25px; ">
+                <div class="que-title"
+                     style="display: flex;font-size:30px;max-height: 50px;border-bottom: 1px solid #DDDDDD">
+                    <div id="qtitle">标题</div>
+                    <div id="qintegral" class="arrow_box">积分</div>
+                </div>
+                <div class="question-labels">
+                    <a>第一个标签</a>
+                    <a>第二个标签</a>
+                    <a>第三个标签</a>
+                </div>
+                <div id="qcontent" class="main-body"
+                     style="max-height:450px;overflow-y: scroll;width:100%;height: 70%;margin-top:10px;min-height: 321px; border-bottom: 1px solid #DDDDDD">
+                </div>
+
+                <div id="button-reply" style="text-align:center;margin-top:10px;">
+                    <div role="button" class="reply-to-question-button" style="color: #888888;">
+                        <a href="#" data-toggle="modal" data-target="#replywindow">
+                            回复
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="answerper"
+         style="overflow:hidden;width: 95%;margin-left:auto; margin-right:auto;margin-top:10px;max-height:1000px;min-height: 250px;background:#DDDDDD ">
+        <div class="ans-ans"
+             style="display: inline-block;width: 80%;float:right;min-height: 327px;margin-top:10px;background-color:#fff;">
+            <div id="reply-to-question-block" class="que-textbox"
+                 style="width:100%;background-color:#fff;margin-left:auto; margin-right:auto;margin-top:20px;">
+                <div class="main-body"
+                     style="float: left;max-height:450px;overflow-y: scroll;min-height: 277px; width:100%;border-bottom: 1px solid #DDDDDD">
+                    正文
+                </div>
+                <div class="replybotton2" style="width:80%;float: left;height: 30px;">
+                    <div role="button" style="color: #888888;" onclick="reply-to-reply()">回复</div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="ans-infor"
+             style="width: 15%;height:327px;float:right;margin-top:10px;background-color:#fff;border-right: 1px solid #DDDDDD">
+            <div id="best-ans" style="color:#FF5511;font-weight:bold;margin-top:10px;margin-left:10px;display:none；">
+                优质回答
+            </div>
+            <div id="ans-head">
+                <div class="anshead">
+                </div>
+            </div>
+            <div id="ans-name" style="text-align:center;margin-top:20px;font-weight:bold;">
+                回复人用户名
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="replywindow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width:50%;padding: 10px;">
+        <div class="modal-content">
+            <div class="modal-body" style="width:100%;">
+                <div class="edit-pro">
+                    <form id="answerForm">
+                        <div class="edit-for-sett">
+                            <div style="height: 100px;background-color: #DDDDDD">
+                                <div class="replytext">
+                                    <textarea style="width:100%;height:100px;"
+                                              placeholder="......请填写回复内容......"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="replybotton3">
+                                <input type="submit" value="提交"/>
+                                <input type="button" data-dismiss="modal" aria-label="Close" value="取消"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package muzhou.com.utils;
+package muzhou.com.bean;
 
 import java.io.*;
 import java.nio.file.Paths;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Content;
+import muzhou.com.bean.Content;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
@@ -23,7 +23,7 @@ import org.apache.lucene.store.FSDirectory;
 
 
 public class Index {
-    public static final String DIR_PATH = "D:\\index\\test";
+    public static final String DIR_PATH = "/indexDir";
     public List<Content> contents = new ArrayList<>();
     private final int CONTENT_LENGTH = 60; //高亮最佳匹配句子长度
     private final int MAX_SAERCH_COUNT = 999999; //最大选取个数
@@ -54,14 +54,13 @@ public class Index {
      * 写入信息到索引
      * contents中第一个应为title，第二个应为keywords，第三为content
      * @param dirPath 索引目录位置
-     * @param id 当前Id
-     * @param contents 对应各个Field写入的数据
      * @return 创建索引是否成功
      */
-    public boolean writeToIndex(String dirPath, int id, String[] contents) {
+    public boolean writeToIndex(String dirPath,QuestionBean questionBean) {
+        String[] contents = {questionBean.getTitle(),questionBean.getKeyword(),questionBean.getContent()};
         IndexWriter iw = getIndexWriter(dirPath);
         Document doc = new Document();
-        doc.add(new TextField(ID, String.valueOf(id), Field.Store.YES));
+        doc.add(new TextField(ID, String.valueOf(questionBean.getUserId()), Field.Store.YES));
         doc.add(new TextField(TITLE, contents[0], Field.Store.YES));
         int length = contents[2].length() > CONTENT_LENGTH ? CONTENT_LENGTH : contents[2].length();
         doc.add(new TextField(CONTENT, contents[2].substring(0, length) +"...", Field.Store.YES));
@@ -81,46 +80,46 @@ public class Index {
 
     /**
      * 写入信息到索引,目录为默认目录
-     * @param id 当前Id
-     * @param fields 写入数据的各个Field名
-     * @param contents 对应各个Field写入的数据
      * @return 创建索引是否成功
      */
-    public boolean writeToIndex(int id, String[] fields, String[] contents) {
-        return writeToIndex(DIR_PATH, id, contents);
+    public boolean writeToIndex(QuestionBean questionBean) {
+        return writeToIndex(DIR_PATH,questionBean);
     }
 
     /**
      * 把数据库中全部数据写入索引
      * @param dirPath 索引目录位置
-     * @param rs 数据库查询结果集
      * @return 创建索引是否成功
      */
-    public boolean writeAllToIndex(String dirPath, ResultSet rs) {
+
+
+
+    public boolean writeAllToIndex(String dirPath, List<QuestionBean> questionBean1) {
         try {
+            deleteAllIndex();
             IndexWriter iw = getIndexWriter(dirPath);
             int i = 0;
-            while (rs.next()) {
-                Document doc = new Document();
-                doc.add(new TextField(ID, String.valueOf(rs.getInt(1)), Field.Store.YES));
-                String title = rs.getString("title");
-                //标题存三次增加搜索准确性
-                String keyword = rs.getString("keyword") + title + title;
-                String content = rs.getString("content");
-                doc.add(new TextField(TITLE, title, Field.Store.YES));
-                int length = content.length() > CONTENT_LENGTH ? CONTENT_LENGTH : content.length();
-                doc.add(new TextField(CONTENT, content.substring(0, length) + "...", Field.Store.YES));
-                doc.add(new TextField(SEARCH_FIELD, title + keyword + content, Field.Store.NO));
-                iw.addDocument(doc);
-                i += keyword.length() + content.length() + title.length();
-            }
+                for (QuestionBean questionBean :questionBean1)
+                {
+                    Document doc = new Document();
+                    doc.add(new TextField(ID, String.valueOf(questionBean.getUserId()), Field.Store.YES));
+                    String title = questionBean.getTitle();
+                    //标题存三次增加搜索准确性
+                    String keyword = questionBean.getKeyword() + title + title;
+                    String content = questionBean.getContent();
+                    doc.add(new TextField(TITLE, title, Field.Store.YES));
+                    int length = content.length() > CONTENT_LENGTH ? CONTENT_LENGTH : content.length();
+                    doc.add(new TextField(CONTENT, content.substring(0, length) + "...", Field.Store.YES));
+                    doc.add(new TextField(SEARCH_FIELD, title + keyword + content, Field.Store.NO));
+                    iw.addDocument(doc);
+                    i += keyword.length() + content.length() + title.length();
+                }
+
             iw.commit();
             iw.close();
             System.out.println("搜索字符数:" + i);
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -128,11 +127,10 @@ public class Index {
 
     /**
      * 把数据库中全部数据写入索引，目录为默认目录；
-     * @param rs 数据库查询结果集
      * @return 创建索引是否成功
      */
-    public boolean writeAllToIndex(ResultSet rs) {
-        return writeAllToIndex(DIR_PATH, rs);
+    public boolean writeAllToIndex(List<QuestionBean> questionBean) {
+        return writeAllToIndex(DIR_PATH, questionBean);
     }
 
     private static Analyzer getAnalyzer() {

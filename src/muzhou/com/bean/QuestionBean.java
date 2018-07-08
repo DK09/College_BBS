@@ -6,6 +6,7 @@ public class QuestionBean {
 
     private int qid;
     private int userId;
+    private String username;
     private String category;
     private String keyword;
     private String title;
@@ -17,7 +18,17 @@ public class QuestionBean {
     private int answerCount;//
     private int visitCount;
     private int bestAid;
+    private int solved = 0;
     private String visible;
+
+
+    public int getSolved() {
+        return solved;
+    }
+
+    public void setSolved(int solved) {
+        this.solved = solved;
+    }
 
     public void setQid(int qid) {
         this.qid = qid;
@@ -130,11 +141,20 @@ public class QuestionBean {
         this.visible = visible;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
         return "QuestionBean{" +
                 "qid=" + qid +
                 ", userId=" + userId +
+                ", username='" + username + '\'' +
                 ", category='" + category + '\'' +
                 ", keyword='" + keyword + '\'' +
                 ", title='" + title + '\'' +
@@ -146,6 +166,7 @@ public class QuestionBean {
                 ", answerCount=" + answerCount +
                 ", visitCount=" + visitCount +
                 ", bestAid=" + bestAid +
+                ", solved=" + solved +
                 ", visible='" + visible + '\'' +
                 '}';
     }

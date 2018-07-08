@@ -31,7 +31,6 @@ public class RegisterServlet extends HttpServlet {
         String register = request.getParameter("Register");
         String email = request.getParameter("email");
         String telephone = request.getParameter("telephone");
-        System.out.println(password);
         UserService userService = new UserServiceImpl();
         UserBean user = new UserBean();
         user = userService.getUser(username);
@@ -63,6 +62,7 @@ public class RegisterServlet extends HttpServlet {
             out.print(jsonObject);
 
         }
+
         else if (password.length()<6||password.length()>16)
         {
             jsonObject.accumulate("checkName", "1")
@@ -72,6 +72,15 @@ public class RegisterServlet extends HttpServlet {
             response.setContentType("application/json");
             out.print(jsonObject);
 
+        }
+        else if (confirm.equals(""))
+        {
+            jsonObject.accumulate("checkName", "1")
+                    .accumulate("checkPass", "1")
+                    .accumulate("checkConfirm", "2");
+
+            response.setContentType("application/json");
+            out.print(jsonObject);
         }
         else if (!confirm.equals(password))
         {
@@ -102,7 +111,7 @@ public class RegisterServlet extends HttpServlet {
             userBean.setEmail(email);
             userBean.setTelephone(telephone);
 
-                userService.addUser(userBean); //添加普通用户
+            userService.addUser(userBean); //添加用户
 
             jsonObject.accumulate("checkName", "1")
                     .accumulate("checkPass", "1")

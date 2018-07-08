@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* CSS Document */
+.head
+{
+	width:150px;
+	height:150px;
+	border-radius:150px;
+	margin-left:auto;
+    margin-right:auto;
+    margin-top:60px;
+    background-color:#48cfc1;
+}
+.information
+{
+	color: #48cfc1;
+    font-size: 32px;
+    margin-bottom: 60px;
+	font-family: '宋体','Varela Round', sans-serif;
+	font-weight:bold;
+	margin-top:65px;
+	list-style-type:none;
+}
+.my-information
+{
+	
+	background:url(../images/逐梦代码⚪.jpg) no-repeat top center;
+	background-repeat:no-repeat; 
+	background-size:100% 100%;
+	-moz-background-size:100% 100%;
+
+}
+.tab-name
+{	
+	height: 50px;
+	color: #48cfc1;
+	font-size: 20px;
+}
+.answer-content
+{
+	
+}
+.an-tab-name
+{
+	height:50px;
+	color: #48cfc1;
+	font-size: 20px;
+}
+.profile-gd li
+{
+	color: #48cfc1;
+	font-size:50px;
+}
+.alter
+{
+
+}

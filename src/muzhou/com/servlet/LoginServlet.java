@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
@@ -28,19 +29,27 @@ public class LoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
 
+
         UserService userService = new UserServiceImpl();
         UserBean user = new UserBean();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String Login = request.getParameter("Login");
         user = userService.getUser(username);
-        if (user == null) {
 
-            jsonObject.accumulate("checkName", "0").accumulate("checkPass", "1");
+       if (username.equals(""))
+        {
+            jsonObject.accumulate("checkName", "2").accumulate("checkPass", "1");
             out.print(jsonObject);
+        }
+       else if (user == null) {
 
-        } else if (!user.getPassWord().equals(password)) {
-            jsonObject.accumulate("checkName", "1").accumulate("checkPass", "0");
+           jsonObject.accumulate("checkName", "0").accumulate("checkPass", "1");
+           out.print(jsonObject);
+
+       }
+        else if (!user.getPassWord().equals(password)) {
+            jsonObject.accumulate("checkName", "1").accumulate("checkPass","0");
             out.print(jsonObject);
 
         } else if (user.getPassWord().equals(password)) {

@@ -1,10 +1,9 @@
 package muzhou.com.servlet;
 
-import model.Content;
+import muzhou.com.bean.Content;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import util.Data;
-import util.Index;
+import muzhou.com.bean.Index;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,14 +28,20 @@ public class SearchServlet extends HttpServlet {
             response.setContentType("application/json");
 
             String keyword = request.getParameter("keyword");
-            int startPage = Integer.parseInt(request.getParameter("startPage")) - 1;
+            String start = request.getParameter("startPage");
+            System.out.println("字符串"+start);
+            int startPage = Integer.parseInt(start) - 1;
+            System.out.println("int"+startPage);
             JSONObject json = new JSONObject();
+
+
+
             if (keyword.equals("")) {
                 json.accumulate("count", 0);
                 json.accumulate("content", null);
             } else {
                 Index index = new Index();
-                int count = index.getSeachResult(keyword, startPage, Data.PAGE_ITEM_COUNT);
+                int count = index.getSeachResult(keyword, startPage, 10);
                 List<Content> contentList = index.contents;
 
 
@@ -44,10 +49,9 @@ public class SearchServlet extends HttpServlet {
                 json.accumulate("count", count);
                 json.accumulate("questions", jsonArray);
             }
-            response.setContentType("application/json");
             PrintWriter out = response.getWriter();
-            out.print(json);
             System.out.println(json);
+            out.print(json);
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
